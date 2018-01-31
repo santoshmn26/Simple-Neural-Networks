@@ -1,2 +1,2 @@
 # Simple-Neural-Networks
-Creating a simple Neural Networks
+Creating some simple Neural Networks
