@@ -5,3 +5,13 @@ We use a single neuron for this example but we use two inputs
   1. x location
   2. y location
 But we have only one output that is either class '0' or class '1'.
+-----------------------------------------------------------------------------------------------------------------------------------------
+Information about the Neural Network
+1. Number of Neurons - 1
+2. Activation Function - Linear 
+    y=x
+3. Number of Inputs - 2
+    x1,x2
+4. Number of outputs - 1
+     y
+-----------------------------------------------------------------------------------------------------------------------------------------     
