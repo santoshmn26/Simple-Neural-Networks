@@ -22,7 +22,7 @@ class Neuron:
         self.a=1/(1+math.exp(-1*self.s))
         x=self.ComputeActivationFunctionDerivative()
         return(self.a)
-'''
+```
 x=Neuron()
 inputs=[1,2]
 x.inputs=inputs
@@ -30,4 +30,4 @@ x.weights=[0.5,1.1]
 x.bias=1
 x.computeSum(inputs)
 print(x.s)
-'''
+```
