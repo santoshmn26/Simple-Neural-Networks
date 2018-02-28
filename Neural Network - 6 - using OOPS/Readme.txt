@@ -3,7 +3,7 @@ The project consists of 3 classes
   1. Neuron class
   2. Layer class
   3. Network class
------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 Information about the Neural Network
 1. Number of Neurons - Can be specified during Run time
 2. Activation Function - Sigmoid 
@@ -17,6 +17,24 @@ Information about the Neural Network
 6. Learning Rate 
     LR=0.01
 7. Number of Epoch
-    Epoch=10000
------------------------------------------------------------------------------------------------------------------------------------------
+    Epoch=10000   (Optional can be changed during execution time)
+----------------------------------------------------------------------------------------------------------------
+  Information about the files
   
+  The Neural Network is coded with the help of OOP 
+  The Project consists of 3 class files
+    1. Neuron Class (Level 1 Base Class)
+    2. Layer Class (Level 2 - Inherited Neuron class)
+    3. Network Class  (Level 3 - Inherited Layer class)
+    
+Neuron Class just maintaines a object of a single Neuron
+Layer Class consists of a list of Neurons
+Network Class consists of a list of Layer 
+----------------------------------------------------------------------------------------------------------------
+Two files are used to train the NN
+  1. Input matrix (Input values)
+  2. Output matrix  (Output Values)
+Limitation about this project
+  1. Number of neurons in the first layer must be equal to Number of inputs
+  2. Number of neurons in the last layer must be equal to Number of outputs
+  3. Hidden layer can consists of any number of neurons
