@@ -8,6 +8,7 @@ class Network(Layer):
         self.Layers=Layers
         self.input_x=input_x
         self.output_y=output_y
+        self.gradDescType=None
         for i in range(len(Layers)):
             for j in (Layers[i].Neurons):
                 temp = list()
@@ -39,15 +40,81 @@ class Network(Layer):
 
 
     def TrainByBackProp(self,NumEpochs,LearningRate):
-        for i in range(NumEpochs):
-            error=0
-            for j in range(len(self.input_x)):
-                output=self.DoForwardPass(self.input_x[i])
+        m=len(self.input_x)
+        n1=len(self.input_x[0])
+        for k in range(NumEpochs):
+            indata=list()
+            for i in range(m):          #Record number
+                for j in range(n1):     #Length / Number of inputs
+                    indata.append(self.input_x[i][j])
+                self.DoForwardPass(indata)
+                indata.clear()
+                output_num=0
+            #Calculating Gradients for the last layer
+                for n in (Layers[-1].Neurons):
+                    n.delta=-1*(output_y[i][output_num]-n.a)*(n.fprime)
+                    output_num+=1
+                    temp_grad_list=[]
+                    for g in range(len(n.weights)):
+                        temp_grad_list.append(n.delta*Layers[-2].Neurons[g].a)
+                    n.gradw=temp_grad_list[::]
+                    n.gradb=n.delta
+                    #print(n.gradw)
+                    temp_grad_list.clear()
+
+            #Compute deltas, grads on next layers, stop before input layer
 
 
 
 
 
+
+
+
+
+
+            #Compute deltas, grads for the first layer
+                neuron_num=0
+                for n in (Layers[0].Neurons):       #selecting the neurons in the first layer
+                    delta_sum=0                     #delta_sum because we accumulate the delta and weights of the next layer
+                    temp_grad_list=[]
+                    for k in range(len(Layers[1].Neurons)):
+                        delta_sum+=Layers[1].Neurons[k].delta*Layers[1].Neurons[k].weights[neuron_num]
+                    n.delta=delta_sum*n.fprime
+                    for w in range(len(n.weights)):
+                        t=n.delta*input_x[i][w]
+                        temp_grad_list.append(t)
+                    n.gradw=temp_grad_list[::]
+                    n.gradb=n.delta
+                    neuron_num+=1
+                    temp_grad_list.clear()
+                    #print(n.gradw)
+                self.UpdateWeithtsAndBiases(0.01, 1)
+                self.ClearGradients()
+        for l in (Layers):
+            for n in (l.Neurons):
+                #print(n.weights)
+                pass
+
+
+
+    def UpdateWeithtsAndBiases(self,LearningRate,batch):
+        for l in (Layers):
+            for n in (l.Neurons):
+                new_w=[]
+                for i in range(len(n.weights)):
+                    new_w.append(n.weights[i]-LearningRate*(n.gradw[i]/batch))
+                n.weights.clear()
+                n.weights=new_w[::]
+                new_w.clear()
+                n.bias=n.bias-LearningRate*(n.gradb/batch)
+                #print(n.weights)
+
+    def ClearGradients(self):
+        for l in (Layers):
+            for n in (l.Neurons):
+                n.gradw.clear()
+                n.gradb=None
 
 l1=Layer(2)              #objects of layer class no neurons created yet
 l2=Layer(2)              #objects of layer class no neurons created yet
@@ -63,23 +130,11 @@ for i in range(len(NN.Layers)):
     for j in (NN.Layers[i].Neurons):
         print("Layer",i, "Neuron", k,"weights = ",j.weights, "bias = ",j.bias)
         k+=1
-ff=NN.DoForwardPass(input_x[0])
-print(ff)
+
+NN.TrainByBackProp(10000,0.01)
+for i in (input_x):
+    x=NN.DoForwardPass(i)
+    print("[0,1]"if x[0]<0.5 else "[1,0]")
 
 
 
-
-'''
-l=Layer()
-l.layers(2)
-for i in range(2):
-    temp=list()
-    for j in range(2):
-        x = (random.uniform(0, 1))
-        x = (float("{0:.2f}".format(x)))
-        temp.append(x)
-    l.Neurons[i].weights=temp[::]
-    rb = (random.uniform(0, 1))
-    rb = (float("{0:.2f}".format(rb)))
-    l.Neurons[i].bias=rb
-'''
