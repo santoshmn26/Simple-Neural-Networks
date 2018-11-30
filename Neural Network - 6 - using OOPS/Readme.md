@@ -23,7 +23,6 @@ The project consists of 3 classes
     Epoch=10000   (Optional can be changed during execution time)
 ```
 ### Information about the files
-```
   The Neural Network is coded with the help of OOP's concept and python 
   The Project consists of 3 class files
 ```
@@ -35,12 +34,12 @@ Neuron Class just maintaines a object of a single Neuron
 Layer Class consists of a list of Neurons
 Network Class consists of a list of Layer 
 
-Two files are used to train the NN which are the training data
+### Two files are used to train the NN which are the training data
 ```
   1. Input matrix (Input values)
   2. Output matrix  (Output Values)
 ```
-Limitation about this project
+### Limitation about this project
 ```
   1. Number of neurons in the first layer must be equal to Number of inputs
   2. Number of neurons in the last layer must be equal to Number of outputs
