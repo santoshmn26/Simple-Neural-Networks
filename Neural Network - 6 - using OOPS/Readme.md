@@ -35,12 +35,12 @@ Neuron Class just maintaines a object of a single Neuron
 Layer Class consists of a list of Neurons
 Network Class consists of a list of Layer 
 
-### Two files are used to train the NN which are the training data
+Two files are used to train the NN which are the training data
 ```
   1. Input matrix (Input values)
   2. Output matrix  (Output Values)
 ```
-### Limitation about this project
+Limitation about this project
 ```
   1. Number of neurons in the first layer must be equal to Number of inputs
   2. Number of neurons in the last layer must be equal to Number of outputs
