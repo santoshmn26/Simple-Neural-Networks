@@ -31,7 +31,9 @@ The project consists of 3 classes
     3. Network Class  (Level 3 - Inherited Layer class)
 ``` 
 Neuron Class just maintaines a object of a single Neuron
+
 Layer Class consists of a list of Neurons
+
 Network Class consists of a list of Layer 
 
 ### Two files are used to train the NN which are the training data
